@@ -50,13 +50,31 @@
       var self = this;
 
       window.addEventListener("scroll", function(ev) {
-        if (this._isScrollingUp() && this.$el.style.position !== "fixed") {
+        // In OS X, with "elastic scroll" enabled, the scrolling can get values
+        // below 0
+        if (window.scrollY < 0) {
+          return;
+        }
+
+        // Case we did not scrolled more than 1px, do nothing
+        if (window.scrollY === this._scrollLastPos) {
+          return;
+        }
+
+        if (this._isScrollingUp() && this._isFullyInViewport()) {
           this.$el.style.position = "fixed";
           this.$el.style.top = 0;
-        } else if (this._isScrollingDown() && this.$el.style.position !== "absolute") {
+        } else if (this._isScrollingUp() && !this._isPartiallyInViewport()) {
+          this.$el.style.position = "absolute";
+          this.$el.style.top = "" + (window.scrollY - this.$el.offsetHeight + 1) + "px";
+        } else if (this._isScrollingDown() && this._isFullyInViewport()) {
           this.$el.style.position = "absolute";
           this.$el.style.top = window.scrollY + "px";
+        } else if (this._isScrollingDown() && !this._isPartiallyInViewport()) {
+
         }
+
+        this._scrollLastPos = window.scrollY;
       }.bind(this));
 
       return this;
@@ -66,18 +84,44 @@
       var bool = null;
 
       if (window.scrollY > this._scrollLastPos) {
+        console.log("scrolling DOWN");
         bool = false;
       } else if (window.scrollY < this._scrollLastPos) {
+        console.log("scrolling UP");
         bool = true;
       }
-
-      this._scrollLastPos = window.scrollY;
 
       return bool;
     };
 
     QuickReturn.prototype._isScrollingDown = function() {
       return !this._isScrollingUp();
+    };
+
+    QuickReturn.prototype._isFullyInViewport = function() {
+      var rect = this.$el.getBoundingClientRect();
+
+      var isFullyInViewport = (
+          rect.top >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+      );
+
+      console.log("fully in viewport: " + isFullyInViewport);
+
+      return isFullyInViewport;
+    };
+
+    QuickReturn.prototype._isPartiallyInViewport = function() {
+      var rect = this.$el.getBoundingClientRect();
+
+      var isPartiallyInViewport = (
+          (rect.top > 0 && rect.top < (window.innerHeight || document.documentElement.clientHeight)) ||
+          (rect.bottom > 0 && rect.bottom < (window.innerHeight || document.documentElement.clientHeight))
+      );
+
+      console.log("partially in viewport: " + isPartiallyInViewport);
+
+      return isPartiallyInViewport;
     };
 
   </script>
