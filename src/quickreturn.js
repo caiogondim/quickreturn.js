@@ -109,7 +109,7 @@
   // ---
 
   QuickReturn.prototype._rAFscrollhandler = function() {
-    if (!this._isTicking && this._shouldUpdatePosition) {
+    if (!this._isTicking && this._shouldUpdatePosition()) {
       requestAnimationFrame(this._updatePosition.bind(this));
       this._isTicking = true;
     }
