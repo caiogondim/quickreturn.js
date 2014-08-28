@@ -35,9 +35,8 @@
   };
 
   QuickReturn.prototype._shouldUpdatePosition = function() {
-    // In OS X, with "elastic scroll" enabled, the scrolling can get values
-    // below 0
-    if (scrollY < 0) {
+    // Ignores "elastic scrolling"
+    if (this._scrollY < 0 || this._scrollY > (document.body.clientHeight - window.innerHeight)) {
       return false;
     }
 
@@ -109,6 +108,8 @@
   // ---
 
   QuickReturn.prototype._rAFscrollhandler = function() {
+    this._scrollY = window.scrollY;
+
     if (!this._isTicking && this._shouldUpdatePosition()) {
       requestAnimationFrame(this._updatePosition.bind(this));
       this._isTicking = true;
