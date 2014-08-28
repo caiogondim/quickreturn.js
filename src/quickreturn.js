@@ -4,6 +4,8 @@
 // - publish on NPM and Bower
 // - Test with Web Driver
 // - Test coding standard
+// - Setup grunt
+// - Build minified (with source maps) version in dist folder
 ;(function() {
   "use strict";
 
