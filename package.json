@@ -1,0 +1,22 @@
+{
+  "name": "quickreturn.js",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/quickreturn.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/caiogondim/quickreturn.js.git"
+  },
+  "author": "Caio Gondim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caiogondim/quickreturn.js/issues"
+  },
+  "homepage": "https://github.com/caiogondim/quickreturn.js"
+}
