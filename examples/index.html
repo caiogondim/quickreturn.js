@@ -10,7 +10,7 @@
     .navbar {
       height: 150px;
       background-color: #F78D8C;
-      position: fixed;
+      position: absolute;
       top: 0;
       width: 100%;
     }
@@ -40,8 +40,10 @@
   <div class="content-2"></div>
   <script src="/lib/quickreturn.js"></script>
   <script>
-    var navbar = new QuickReturn({el: ".navbar"});
-    navbar.init();
+      var navbar = new QuickReturn({
+        el: ".navbar"
+      });
+      navbar.init();
   </script>
 </body>
 </html>
