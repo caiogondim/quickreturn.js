@@ -1,4 +1,4 @@
-# dotfiles
+# quickreturn.js
 
 <img
   src="https://raw.githubusercontent.com/caiogondim/quickreturn.js/master/logo/logo.png"
