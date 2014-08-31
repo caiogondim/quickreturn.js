@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>quickreturn.js</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .offset {
+      height: 200px;
+      width: 100%;
+      background-color: #D5D5D5;
+    }
+
+    .navbar {
+      height: 150px;
+      background-color: #F78D8C;
+      width: 100%;
+    }
+
+    .content-1 {
+      width: 100%;
+      height: 500px;
+      background-color: #3B3B3B;
+    }
+
+    .content-2 {
+      width: 100%;
+      height: 500px;
+      background-color: #494949;
+    }
+  </style>
+</head>
+<body>
+  <div class="offset"></div>
+  <div class="navbar"></div>
+  <div class="content-1"></div>
+  <div class="content-2"></div>
+  <div class="content-1"></div>
+  <div class="content-2"></div>
+  <div class="content-1"></div>
+  <div class="content-2"></div>
+  <div class="content-1"></div>
+  <div class="content-2"></div>
+  <script src="/lib/quickreturn.js"></script>
+  <script>
+    var navbar = new QuickReturn({
+      el: ".navbar"
+    });
+    navbar.init();
+  </script>
+</body>
+</html>
