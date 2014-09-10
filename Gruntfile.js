@@ -6,6 +6,7 @@ module.exports = function(grunt) { "use strict";
   grunt.loadNpmTasks("grunt-contrib-connect")
   grunt.loadNpmTasks("grunt-contrib-jshint")
   grunt.loadNpmTasks("grunt-nightwatch")
+  grunt.loadNpmTasks("grunt-rsync-2")
 
   var config = {}
 
@@ -53,10 +54,21 @@ module.exports = function(grunt) { "use strict";
     ]
   }
 
+  config.rsync = {
+    deploy: {
+      files: "www/"
+    , options: {
+        host: "caiogondim.com"
+      , remoteBase: "~/quickreturnjs.caiogondim.com/"
+      }
+    }
+  }
+
   grunt.initConfig(config)
 
   grunt.registerTask("build", ["uglify"])
   grunt.registerTask("test", ["jshint", "nightwatch"])
   grunt.registerTask("serve", ["connect"])
   grunt.registerTask("www:serve", ["connect:www"])
+  grunt.registerTask("www:deploy", ["rsync"])
 }
