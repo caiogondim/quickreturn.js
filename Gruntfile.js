@@ -29,11 +29,17 @@ module.exports = function(grunt) { "use strict";
   }
 
   config.connect = {
-    server: {
+    examples: {
       options: {
         keepalive: true
       }
     }
+  , www: {
+    options: {
+      keepalive: true
+    , base: "www"
+    }
+  }
   }
 
   config.jshint = {
@@ -52,4 +58,5 @@ module.exports = function(grunt) { "use strict";
   grunt.registerTask("build", ["uglify"])
   grunt.registerTask("test", ["jshint", "nightwatch"])
   grunt.registerTask("serve", ["connect"])
+  grunt.registerTask("www:serve", ["connect:www"])
 }
