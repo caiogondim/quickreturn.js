@@ -10,10 +10,16 @@ module.exports = function(grunt) { "use strict";
 
   var config = {}
 
+  config.pkg =grunt.file.readJSON("package.json")
+
   config.uglify = {
     dist: {
       options: {
         sourceMap: true
+      , banner: "/*!\n" +
+                "  quickreturn.js v<%= pkg.version %>\n" +
+                "  http://quickreturnjs.caiogondim.com\n" +
+                "*/"
       }
     , files: {
         "dist/quickreturn.min.js": "lib/quickreturn.js"
