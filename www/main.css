@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family:
+    "Helvetica Neue",
+    "Helvetica";
+}
+
+/* navbar ------------------------------------------------------------------- */
+
+.navbar {
+  background-color: #646464;
+  height: 100px;
+  padding: 20px;
+  position: relative;
+}
+
+.navbar__title {
+  font-weight: lighter;
+  font-size: 36px;
+  color: #D5D5D5;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  line-height: 60px;
+}
+
+.navbar__back-to-top {
+  background-color: #3B3B3B;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: block;
+  border-radius: 4px;
+  height: 60px;
+  width: 60px;
+  color: #646464;
+  border: 0;
+  font-size: 36px;
+}
+
+
+/* sections ----------------------------------------------------------------- */
+
+.section {
+  min-height: 500px;
+  background-color: #3B3B3B;
+  padding: 80px;
+  text-align: center;
+}
+
+.section--lighter {
+  background-color: #494949;
+}
+
+.section--intro {
+
+}
+
+.section__title {
+  font-weight: 300;
+  font-size: 36px;
+  text-transform: uppercase;
+}
+
+.section__code {
+  height: 200px;
+  width: 800px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+
+/* section intro ------------------------------ */
+
+.section--intro__logo {
+  width: 500px;
+  height: 500px;
+  display: inline-block;
+}
+
+.section--intro__text {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 120%;
+  color: #D5D5D5;
+}
+
+.btn {
+  border-radius: 8px;
+  border: 1px solid #F68D8A;
+  padding: 20px;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #F68D8A;
+  font-size: 16px;
+  margin: 0 5px;
+}
+
+.btn--primary {
+  background-color: #F68D8A;
+  color: #3B3B3B;
+}
+
+
+/* section installing ------------------------------ */
+
+.section--installing__title {
+  color: #D5ABDA;
+}
+
+

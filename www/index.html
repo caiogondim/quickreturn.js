@@ -2,8 +2,44 @@
 <html>
 <head>
   <title>quickreturn.js</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
+  <div class="navbar">
+    <h1 class="navbar__title">QuickReturn.js</h1>
+    <button class="navbar__back-to-top">↑</button>
+  </div>
 
+  <div class="section section--intro">
+    <img src="logo.png" class="section--intro__logo">
+    <p class="section--intro__text">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+    </p>
+    <div class="section--intro__btn-container">
+      <button class="btn btn--primary">Download</button>
+      <button class="btn">GitHub</button>
+      <button class="btn">Examples</button>
+    </div>
+  </div>
+
+  <div class="section section--lighter section--installing">
+    <h2 class="section__title section--installing__title">Installing</h2>
+    <code class="section__code">
+    </code>
+  </div>
+
+  <div class="section section--usage"></div>
+  <div class="section section--lighter"></div>
+  <div class="footer"></div>
+
+  <script src="quickreturn.min.js"></script>
+  <script>
+    /* global QuickReturn */
+    var navbar = new QuickReturn(".navbar");
+    navbar.init();
+  </script>
 </body>
 </html>
