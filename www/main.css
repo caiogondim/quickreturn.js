@@ -2,6 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  outline: none;
 }
 
 body {
@@ -9,6 +10,33 @@ body {
     "Helvetica Neue",
     "Helvetica";
 }
+
+
+/* buttons ------------------------------------------------------------------ */
+
+.btn {
+  border-radius: 8px;
+  border: 1px solid #F68D8A;
+  padding: 20px;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #F68D8A;
+  font-size: 16px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
+.btn:active {
+  transform: scale(0.9);
+
+}
+
+.btn--primary {
+  background-color: #F68D8A;
+  color: #3B3B3B;
+}
+
 
 /* navbar ------------------------------------------------------------------- */
 
@@ -37,12 +65,12 @@ body {
   top: 20px;
   right: 20px;
   display: block;
-  border-radius: 4px;
   height: 60px;
   width: 60px;
   color: #646464;
   border: 0;
   font-size: 36px;
+  padding: 0;
 }
 
 
@@ -94,27 +122,9 @@ body {
   color: #D5D5D5;
 }
 
-.btn {
-  border-radius: 8px;
-  border: 1px solid #F68D8A;
-  padding: 20px;
-  text-transform: uppercase;
-  background-color: transparent;
-  color: #F68D8A;
-  font-size: 16px;
-  margin: 0 5px;
-}
-
-.btn--primary {
-  background-color: #F68D8A;
-  color: #3B3B3B;
-}
-
 
 /* section installing ------------------------------ */
 
 .section--installing__title {
   color: #D5ABDA;
 }
-
-
