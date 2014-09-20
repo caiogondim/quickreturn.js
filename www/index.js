@@ -7,7 +7,7 @@
 
   window.document
     .addEventListener("click", function(ev) {
-      if (ev.target.className === "navbar__back-to-top") {
+      if (ev.target.className === "btn navbar__back-to-top") {
         window.scrollTo(0, 0)
       }
     })
