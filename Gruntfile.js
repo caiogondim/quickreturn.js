@@ -22,7 +22,7 @@ module.exports = function(grunt) { "use strict";
                 "*/"
       }
     , files: {
-        "dist/quickreturn.min.js": "lib/quickreturn.js"
+        "dist/quickreturn.min.js": "src/quickreturn.js"
       }
     }
   }
@@ -56,7 +56,7 @@ module.exports = function(grunt) { "use strict";
   , all: [
       "Gruntfile.js"
     , "package.json"
-    , "lib/*"
+    , "src/*"
     ]
   }
 

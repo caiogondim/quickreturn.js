@@ -3,7 +3,9 @@
 <head>
   <title>quickreturn.js</title>
   <link rel="shortcut icon" href="favicon.png">
+
   <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" type="text/css" href="vendor/highlightjs/styles/tomorrow-night-eighties.css">
 </head>
 <body>
   <div class="navbar">
@@ -14,7 +16,7 @@
   <div class="section section--intro">
     <div class="container">
       <img src="logo.png" class="section--intro__logo">
-      <p class="section--intro__text">
+      <p class="text section--intro__text">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -31,8 +33,26 @@
   <div class="section section--lighter section--installing">
     <div class="container">
       <h2 class="section__title section--installing__title">Installing</h2>
-      <code class="section__code">
-      </code>
+      <p class="text">
+        Use the minified version on your site. Don't worry about
+        <i>debugability</i>, it has source maps.
+      </p>
+      <pre><code class="section__code html">&lt;script src="quickreturn.min.js"&gt;&lt;/script&gt;</code></pre>
+
+      <p class="text">
+        Create a new QuickReturn object, passing the element you want to behave
+        with the QuickReturn pattern as the argument. Then, call
+        <code>init()</code>.
+      </p>
+      <pre><code class="section__code js">var navbar = document.querySelector(".navbar")
+quickreturn = new QuickReturn(navbar)
+quickreturn.init()</code></pre>
+
+      <p class="text">
+        Whenever you want to come back to the default behavior, just call
+        <code>destroy()</code> on the instance.
+      </p>
+            <pre><code class="section__code js">quickreturn.destroy()</code></pre>
     </div>
   </div>
 
@@ -40,8 +60,8 @@
   <div class="section section--lighter"></div>
   <div class="footer"></div>
 
+  <script src="vendor/highlightjs/highlight.pack.js"></script>
   <script src="quickreturn.min.js"></script>
   <script src="index.js"></script>
-
 </body>
 </html>

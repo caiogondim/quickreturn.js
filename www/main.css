@@ -18,6 +18,25 @@ body {
   margin-left: -400px;
 }
 
+code {
+  text-align: left;
+  font-size: 18px;
+  line-height: 140%;
+}
+
+pre {
+}
+
+.text {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 120%;
+  color: #D5D5D5;
+  text-align: left;
+}
+
 
 /* buttons ------------------------------------------------------------------ */
 
@@ -105,10 +124,10 @@ body {
 }
 
 .section__code {
-  height: 200px;
   width: 800px;
   border-radius: 8px;
   display: inline-block;
+  margin-top: 40px;
 }
 
 
@@ -121,12 +140,7 @@ body {
 }
 
 .section--intro__text {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  font-size: 24px;
-  font-weight: 300;
-  line-height: 120%;
-  color: #D5D5D5;
+  text-align: center;
 }
 
 
