@@ -11,6 +11,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-rsync-2")
   grunt.loadNpmTasks("grunt-jscs")
 
+  var allJSFiles = [
+    "Gruntfile.js",
+    "src/*"
+  ]
+
   var config = {}
 
   config.pkg = grunt.file.readJSON("package.json")
@@ -57,11 +62,14 @@ module.exports = function(grunt) {
     options: {
       jshintrc: true
     },
-    all: [
-      "Gruntfile.js",
-      "package.json",
-      "src/*"
-    ]
+    all: allJSFiles
+  }
+
+  config.jscs = {
+    src: allJSFiles,
+    options: {
+      config: ".jscsrc"
+    }
   }
 
   config.rsync = {
@@ -71,13 +79,6 @@ module.exports = function(grunt) {
         host: "caiogondim.com",
         remoteBase: "~/quickreturnjs.caiogondim.com/"
       }
-    }
-  }
-
-  config.jscs = {
-    src: ["src/*.js", "Gruntfile.js"],
-    options: {
-      config: ".jscsrc"
     }
   }
 

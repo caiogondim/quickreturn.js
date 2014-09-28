@@ -65,7 +65,12 @@
   "disallowSpaceBeforePostfixUnaryOperators": true,
   "requireSpaceBeforeBinaryOperators": true,
   "requireSpaceAfterBinaryOperators": true,
-  // "disallowImplicitTypeConversion": ["numeric", "boolean", "binary", "string"],
+  // "disallowImplicitTypeConversion": [
+  //   "numeric",
+  //   "boolean",
+  //   "binary",
+  //   "string"
+  // ],
   "requireCamelCaseOrUpperCaseIdentifiers": true,
   "disallowKeywords": ["with"],
   "disallowMultipleLineStrings": true,
