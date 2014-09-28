@@ -1,6 +1,7 @@
 /* global window, document, requestAnimationFrame, exports */
 
-;(function(exports) { "use strict";
+;(function(exports) {
+  "use strict";
 
   var cachedScrollY
   var scrollYLastPosition =  window.scrollY
@@ -113,9 +114,9 @@
 
   QuickReturn.prototype._saveCurStyle = function() {
     this._originalStyle = {
-      top: this._el.style.top
-    , position: this._el.style.position
-    , display: this._el.style.display
+      top: this._el.style.top,
+      position: this._el.style.position,
+      display: this._el.style.display
     }
   }
 
@@ -226,7 +227,6 @@
     return !this._isScrollingUp(scrollY, scrollYLastPosition)
   }
 
-
   QuickReturn.prototype._isFullyInViewport = function(el) {
     var rect = el.getBoundingClientRect()
     var documentHeight = window.innerHeight ||
@@ -302,5 +302,4 @@
   }
 
   exports.QuickReturn = QuickReturn
-
 }(typeof exports === "object" && exports || this))
