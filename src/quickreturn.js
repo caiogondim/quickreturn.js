@@ -164,7 +164,7 @@
     // Cache `window.scrollY` to not force a layout (reflow)
     cachedScrollY = window.scrollY
 
-    if (this._shouldUpdatePosition()) {
+    if (this._shouldUpdatePosition(cachedScrollY, scrollYLastPosition)) {
       this._updatePosition()
     }
   }
