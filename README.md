@@ -6,19 +6,17 @@
   align="right"
 />
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat.
+[Roman Nurik](https://plus.google.com/+RomanNurik/posts/1Sb549FvpJt):
+> This is similar to Google Now's search box. It scrolls off-screen with the
+> rest of the scrollable content, but upon scrolling slightly up at any point,
+> it scrolls back into view. Quite a handy technique for search bars and the
+> like.
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+[Android UI Patterns](http://www.androiduipatterns.com/2012/08/an-emerging-ui-pattern-quick-return.html):
+> Quick Return UI design pattern (named by Roman Nurik on G+) is a screen real
+> estate saving design pattern that still allows users to access important off
+> screen controls by easily moving them back to the screen.
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat.
 
 ## Preview
 
