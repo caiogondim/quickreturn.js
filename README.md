@@ -43,6 +43,12 @@ behavior, call `init`.
 menuQuickReturn.init()
 ```
 
+To destroy the quickreturn beahvior on the element, call the `destroy` method
+
+```javascript
+menuQuickReturn.destroy()
+```
+
 
 ## Browser Support
 
