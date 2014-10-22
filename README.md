@@ -23,14 +23,25 @@
 ![Preview](http://raw.github.com/caiogondim/quickreturn.js/master/preview.gif)
 
 
-## API
+## Using
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Grab the js file on `dist/quickreturn.min.js` and the source map on
+`dist/quickreturn.min.js.map` and put in the public folder of your app.
+
+Once the script is in your page, instantiate a new ` Quickreturn` object passing
+the DOM element you want to behave like a “quickreturn” as parameter.
+
+```javascript
+var menuEl = document.querySelector(' .menu')
+var menuQuickReturn = new QuickReturn(menuEl)
+```
+
+The `new` method doesn't have any side-effect. To really initialize the
+behavior, call `init`.
+
+```javascript
+menuQuickReturn.init()
+```
 
 
 ## Browser Support
