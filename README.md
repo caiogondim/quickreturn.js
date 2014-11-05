@@ -28,24 +28,25 @@
 Grab the js file on `dist/quickreturn.min.js` and the source map on
 `dist/quickreturn.min.js.map` and put in the public folder of your app.
 
-Once the script is in your page, instantiate a new ` Quickreturn` object passing
-the CSS selector of the element you want to behave like a “quickreturn”.
+Once the script is in your page, instantiate a new `Quickreturn` object passing
+the DOM element you want to behave like a “quickreturn”.
 
 ```javascript
-var menuQuickReturn = new QuickReturn({el: '.menu'})
+var menu = document.querySelector('.menu')
+var quickReturn = new QuickReturn({el: menu})
 ```
 
 The `new` method doesn't have any side-effect. To really initialize the
 behavior, call `init`.
 
 ```javascript
-menuQuickReturn.init()
+quickReturn.init()
 ```
 
 To destroy the quickreturn beahvior on the element, call the `destroy` method
 
 ```javascript
-menuQuickReturn.destroy()
+quickReturn.destroy()
 ```
 
 

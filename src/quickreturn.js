@@ -1,4 +1,4 @@
-/* global window, document, requestAnimationFrame, exports */
+/* global window, document, requestAnimationFrame, exports, HTMLElement */
 
 ;(function(exports) {
   "use strict";
@@ -16,7 +16,7 @@
       return new QuickReturn()
     }
 
-    this._validateElSelector(args.el)
+    this._validateEl(args.el)
 
     // Instance Properties
     // -------------------
@@ -24,7 +24,7 @@
     // Here is defined *all* properties used in the entire life of the object.
 
     // Cached DOM element we are manipulating.
-    this._el = this._getEl(args.el)
+    this._el = args.el
 
     // Original offset top from DOM node.
     this._elOffsetTop = this._el.offsetTop
@@ -70,37 +70,17 @@
   // -------
 
   /**
-    Validates the selector passed as argument. Throws an error if it is
+    Validates the DOM node passed as argument. Throws an error if it is
     invalid.
 
     @param {String} elSelector
    */
-  QuickReturn.prototype._validateElSelector = function(elSelector) {
-    // There should be only one DOM node that matches with the selector.
-    if (document.querySelectorAll(elSelector) > 1) {
-      throw new Error("There is more than one DOM node that matches with " +
-                      "the selector passed as argument.")
-    }
-
-    // There must exist one, and only one, DOM node that matches with the
-    // selector.
-    if (document.querySelector(elSelector) === null) {
+  QuickReturn.prototype._validateEl = function(el) {
+    if (!(el instanceof HTMLElement)) {
       throw new Error(
-        "There is no DOM node that matches the passed selector."
+        "The argument `el` argument is not an HTMLElement"
       )
     }
-  }
-
-  /**
-    Returns DOM node that matches the selector passed as argument.
-
-    @param {String} selector
-    @return {HTML Element}
-   */
-  QuickReturn.prototype._getEl = function(selector) {
-    var el = document.querySelector(selector)
-
-    return el
   }
 
   QuickReturn.prototype._createClone = function() {

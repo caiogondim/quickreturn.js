@@ -40,7 +40,8 @@
   <div class="content-2"></div>
   <script src="/dist/quickreturn.min.js"></script>
   <script>
-      var navbar = (new QuickReturn({el: ".navbar"})).init()
+    var navbar = document.querySelector('.navbar')
+    var quickReturn = (new QuickReturn({el: navbar})).init()
   </script>
 </body>
 </html>
