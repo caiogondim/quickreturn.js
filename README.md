@@ -29,11 +29,10 @@ Grab the js file on `dist/quickreturn.min.js` and the source map on
 `dist/quickreturn.min.js.map` and put in the public folder of your app.
 
 Once the script is in your page, instantiate a new ` Quickreturn` object passing
-the DOM element you want to behave like a “quickreturn” as parameter.
+the CSS selector of the element you want to behave like a “quickreturn”.
 
 ```javascript
-var menuEl = document.querySelector(' .menu')
-var menuQuickReturn = new QuickReturn(menuEl)
+var menuQuickReturn = new QuickReturn({el: '.menu'})
 ```
 
 The `new` method doesn't have any side-effect. To really initialize the

@@ -10,13 +10,13 @@
     QuickReturn constructor
     @param {String} elSelector a CSS selector of the element to be manipulated.
    */
-  function QuickReturn(elSelector) {
+  function QuickReturn(args) {
     // Returns a new object even if that constructor is called like a function.
     if (!(this instanceof QuickReturn)) {
       return new QuickReturn()
     }
 
-    this._validateElSelector(elSelector)
+    this._validateElSelector(args.el)
 
     // Instance Properties
     // -------------------
@@ -24,7 +24,7 @@
     // Here is defined *all* properties used in the entire life of the object.
 
     // Cached DOM element we are manipulating.
-    this._el = this._getEl(elSelector)
+    this._el = this._getEl(args.el)
 
     // Original offset top from DOM node.
     this._elOffsetTop = this._el.offsetTop
