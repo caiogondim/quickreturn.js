@@ -55,11 +55,15 @@
     this._setupEl(this._el)
 
     this._bindScrollListener()
+
+    return this
   }
 
   QuickReturn.prototype.destroy = function() {
     this._unbindScrollListener()
     this._recoversPrevStyle()
+
+    return this
   }
 
   // Private
