@@ -16,7 +16,7 @@
       return new QuickReturn()
     }
 
-    this._validateEl(args.el)
+    validateEl(args.el)
 
     // Instance Properties
     // -------------------
@@ -47,21 +47,21 @@
   // ------
 
   QuickReturn.prototype.init = function() {
-    this._saveCurStyle()
+    saveCurStyle.call(this)
 
-    this._createClone()
-    this._hideClone()
+    createClone.call(this)
+    hideClone.call(this)
 
-    this._setupEl(this._el)
+    setupEl.call(this, this._el)
 
-    this._bindScrollListener()
+    bindScrollListener.call(this)
 
     return this
   }
 
   QuickReturn.prototype.destroy = function() {
-    this._unbindScrollListener()
-    this._recoversPrevStyle()
+    unbindScrollListener.call(this)
+    recoversPrevStyle.call(this)
 
     return this
   }
@@ -75,7 +75,7 @@
 
     @param {String} elSelector
    */
-  QuickReturn.prototype._validateEl = function(el) {
+  function validateEl(el) {
     if (!(el instanceof HTMLElement)) {
       throw new Error(
         "The argument `el` argument is not an HTMLElement"
@@ -83,20 +83,20 @@
     }
   }
 
-  QuickReturn.prototype._createClone = function() {
+  function createClone() {
     this._elClone = this._el.cloneNode(true)
     this._elClone = this._el.parentNode.insertBefore(this._elClone, this._el)
   }
 
-  QuickReturn.prototype._hideClone = function() {
+  function hideClone() {
     this._elClone.style.display = "none"
   }
 
-  QuickReturn.prototype._showClone = function() {
+  function showClone() {
     this._elClone.style.display = this._originalStyle.display
   }
 
-  QuickReturn.prototype._saveCurStyle = function() {
+  function saveCurStyle() {
     this._originalStyle = {
       top: this._el.style.top,
       position: this._el.style.position,
@@ -104,12 +104,12 @@
     }
   }
 
-  QuickReturn.prototype._recoversPrevStyle = function() {
+  function recoversPrevStyle() {
     this._el.style.top = this._originalStyle.top
     this._el.style.position = this._originalStyle.position
   }
 
-  QuickReturn.prototype._getTopZindex = function() {
+  function getTopZindex() {
     var els = document.querySelectorAll("*")
     var topZindex = 0
 
@@ -123,14 +123,14 @@
     return topZindex
   }
 
-  QuickReturn.prototype._setupEl = function(el) {
+  function setupEl(el) {
     el.className = el.className + " quickreturn"
-    el.style.zIndex = this._getTopZindex() + 1
+    el.style.zIndex = getTopZindex() + 1
   }
 
-  QuickReturn.prototype._bindScrollListener = function() {
-    this._rAFscrollhandler = this._rAFscrollhandler.bind(this)
-    this._vanillaScrollHandler = this._vanillaScrollHandler.bind(this)
+  function bindScrollListener() {
+    this._rAFscrollhandler = rAFscrollhandler.bind(this)
+    this._vanillaScrollHandler = vanillaScrollHandler.bind(this)
 
     if (window.requestAnimationFrame) {
       window.addEventListener("scroll", this._rAFscrollhandler)
@@ -139,17 +139,17 @@
     }
   }
 
-  QuickReturn.prototype._unbindScrollListener = function() {
+  function unbindScrollListener() {
     window.removeEventListener("scroll", this._rAFscrollhandler)
     window.removeEventListener("scroll", this._vanillaScrollHandler)
   }
 
-  QuickReturn.prototype._vanillaScrollHandler = function() {
+  function vanillaScrollHandler() {
     // Cache `window.scrollY` to not force a layout (reflow)
     cachedScrollY = window.scrollY
 
-    if (this._shouldUpdatePosition(cachedScrollY, scrollYLastPosition)) {
-      this._updatePosition()
+    if (shouldUpdatePosition.call(this, cachedScrollY, scrollYLastPosition)) {
+      updatePosition.call(this)
     }
   }
 
@@ -161,8 +161,7 @@
     @param {Integer} scrollYLastPosition
     @return {Boolean}
    */
-  QuickReturn.prototype._shouldUpdatePosition = function(cachedScrollY,
-                                                         scrollYLastPosition) {
+  function shouldUpdatePosition(cachedScrollY, scrollYLastPosition) {
     // Ignores "elastic scrolling"
     if (cachedScrollY < 0 ||
         cachedScrollY > (document.body.clientHeight - window.innerHeight)) {
@@ -185,8 +184,7 @@
     @return {Boolean} Returns `true` if is scrolling up, `false` if is
       scrolling down.
    */
-  QuickReturn.prototype._isScrollingUp = function(scrollY,
-                                                  scrollYLastPosition) {
+  function isScrollingUp(scrollY, scrollYLastPosition) {
     var bool = null
 
     if (scrollY > scrollYLastPosition) {
@@ -199,19 +197,18 @@
   }
 
   /**
-    The opposite of `this._isScrollingUp`. Just a convenience function.
+    The opposite of `isScrollingUp`. Just a convenience function.
 
     @param {Integer]} scrollY
     @param {Integer} scrollYLastPosition
     @return {Boolean} Returns `true` if is scrolling up, `false` if is
       scrolling down.
    */
-  QuickReturn.prototype._isScrollingDown = function(scrollY,
-                                                    scrollYLastPosition) {
-    return !this._isScrollingUp(scrollY, scrollYLastPosition)
+  function isScrollingDown(scrollY, scrollYLastPosition) {
+    return !isScrollingUp(scrollY, scrollYLastPosition)
   }
 
-  QuickReturn.prototype._isFullyInViewport = function(el) {
+  function isFullyInViewport(el) {
     var rect = el.getBoundingClientRect()
     var documentHeight = window.innerHeight ||
                          document.documentElement.clientHeight
@@ -228,7 +225,7 @@
     @param  {HTML Element} el
     @return {Boolean}
    */
-  QuickReturn.prototype._isPartiallyInViewport = function(el) {
+  function isPartiallyInViewport(el) {
     var rect = el.getBoundingClientRect()
     var documentHeight = window.innerHeight ||
                          document.documentElement.clientHeight
@@ -239,27 +236,27 @@
     )
   }
 
-  QuickReturn.prototype._updatePosition = function() {
+  function updatePosition() {
     // TODO: only touch the DOM when needed
     if (cachedScrollY <= this._elOffsetTop) {
-      this._recoversPrevStyle()
-      this._hideClone()
-    } else if (this._isScrollingUp(cachedScrollY, scrollYLastPosition) &&
-               this._isFullyInViewport(this._el)) {
+      recoversPrevStyle.call(this)
+      hideClone.call(this)
+    } else if (isScrollingUp(cachedScrollY, scrollYLastPosition) &&
+               isFullyInViewport(this._el)) {
       this._el.style.position = "fixed"
       this._el.style.top = 0
-      this._showClone()
-    } else if (this._isScrollingUp(cachedScrollY, scrollYLastPosition) &&
-               !this._isPartiallyInViewport(this._el)) {
+      showClone.call(this)
+    } else if (isScrollingUp(cachedScrollY, scrollYLastPosition) &&
+               !isPartiallyInViewport(this._el)) {
       this._el.style.position = "absolute"
       this._el.style.top = "" + (cachedScrollY - this._el.offsetHeight) + "px"
-      this._showClone()
-    } else if (this._isScrollingDown(cachedScrollY, scrollYLastPosition) &&
-               this._isFullyInViewport(this._el) &&
+      showClone.call(this)
+    } else if (isScrollingDown(cachedScrollY, scrollYLastPosition) &&
+               isFullyInViewport(this._el) &&
                cachedScrollY > this._elOffsetTop) {
       this._el.style.position = "absolute"
       this._el.style.top = cachedScrollY + "px"
-      this._showClone()
+      showClone.call(this)
     }
 
     // Updates `scrollYLastPosition` with current value.
@@ -275,12 +272,12 @@
     and if it is not `_ticking` already. If not, it `requestAnimationFrame` and
     sets `_isTicking` to `false`.
    */
-  QuickReturn.prototype._rAFscrollhandler = function() {
+  function rAFscrollhandler() {
     cachedScrollY = window.scrollY
 
     if (!this._isTicking &&
-        this._shouldUpdatePosition(cachedScrollY, scrollYLastPosition)) {
-      requestAnimationFrame(this._updatePosition.bind(this))
+        shouldUpdatePosition.call(this, cachedScrollY, scrollYLastPosition)) {
+      requestAnimationFrame(updatePosition.bind(this))
       this._isTicking = true
     }
   }
