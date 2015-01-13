@@ -109,13 +109,14 @@
     this._el.style.position = this._originalStyle.position
   }
 
-  function getTopZindex() {
-    var els = document.querySelectorAll("*")
+  function getTopZindex(subTree) {
+    var els = subTree.querySelectorAll("*")
     var topZindex = 0
 
     Array.prototype.forEach.call(els, function(el) {
-      var elZindex = parseInt(el.style.zIndex, 10)
-      if (elZindex > topZindex) {
+      var style = window.getComputedStyle(el)
+      var elZindex = parseInt(style['z-index'], 10)
+      if (!isNaN(elZindex) && elZindex > topZindex) {
         topZindex = elZindex
       }
     })
@@ -125,7 +126,7 @@
 
   function setupEl(el) {
     el.className = el.className + " quickreturn"
-    el.style.zIndex = getTopZindex() + 1
+    el.style.zIndex = getTopZindex(window.document) + 1
   }
 
   function bindScrollListener() {
