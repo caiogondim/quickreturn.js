@@ -84,19 +84,23 @@
   }
 
   function createClone() {
+    /* jshint validthis:true */
     this._elClone = this._el.cloneNode(true)
     this._elClone = this._el.parentNode.insertBefore(this._elClone, this._el)
   }
 
   function hideClone() {
+    /* jshint validthis:true */
     this._elClone.style.display = "none"
   }
 
   function showClone() {
+    /* jshint validthis:true */
     this._elClone.style.display = this._originalStyle.display
   }
 
   function saveCurStyle() {
+    /* jshint validthis:true */
     this._originalStyle = {
       top: this._el.style.top,
       position: this._el.style.position,
@@ -105,6 +109,7 @@
   }
 
   function recoversPrevStyle() {
+    /* jshint validthis:true */
     this._el.style.top = this._originalStyle.top
     this._el.style.position = this._originalStyle.position
   }
@@ -115,7 +120,7 @@
 
     Array.prototype.forEach.call(els, function(el) {
       var style = window.getComputedStyle(el)
-      var elZindex = parseInt(style['z-index'], 10)
+      var elZindex = parseInt(style["z-index"], 10)
       if (!isNaN(elZindex) && elZindex > topZindex) {
         topZindex = elZindex
       }
@@ -130,6 +135,7 @@
   }
 
   function bindScrollListener() {
+    /* jshint validthis:true */
     this._rAFscrollhandler = rAFscrollhandler.bind(this)
     this._vanillaScrollHandler = vanillaScrollHandler.bind(this)
 
@@ -141,11 +147,14 @@
   }
 
   function unbindScrollListener() {
+    /* jshint validthis:true */
     window.removeEventListener("scroll", this._rAFscrollhandler)
     window.removeEventListener("scroll", this._vanillaScrollHandler)
   }
 
   function vanillaScrollHandler() {
+    /* jshint validthis:true */
+
     // Cache `window.scrollY` to not force a layout (reflow)
     cachedScrollY = window.scrollY
 
@@ -238,6 +247,8 @@
   }
 
   function updatePosition() {
+    /* jshint validthis:true */
+
     // TODO: only touch the DOM when needed
     if (cachedScrollY <= this._elOffsetTop) {
       recoversPrevStyle.call(this)
@@ -274,6 +285,7 @@
     sets `_isTicking` to `false`.
    */
   function rAFscrollhandler() {
+    /* jshint validthis:true */
     cachedScrollY = window.scrollY
 
     if (!this._isTicking &&
